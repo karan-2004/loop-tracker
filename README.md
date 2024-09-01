@@ -1,9 +1,5 @@
 # loop-tracker
 
-## **sample output**
-> ![Screenshot from 2024-09-01 16-48-23](https://github.com/user-attachments/assets/b052d2d4-4538-4450-8f92-5eb7cb9c1227)
-
-
 ## Endpoints
  1. trigger-report -> url:/trigger-report -> response: status and report_id
  2. report-status -> url:/get-report-status/[report-id] -> response: status
