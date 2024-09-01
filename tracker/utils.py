@@ -54,10 +54,8 @@ def calculate_uptime_downtime(store_id):
     print(business_hour_dict)
 
     for period, start_time in [('hour', last_hour_local), ('day', last_day_local), ('week', last_week_local)]:
-
-        filtered_data = poll_data.filter(
-            timestamp_utc__gte=start_time.astimezone(pytz.UTC)
-        ).annotate(
+        poll_data = poll_data.filter(timestamp_utc__gte=start_time.astimezone(pytz.UTC))
+        filtered_data = poll_data.annotate(
             weekday=ExtractWeekDay('timestamp_utc'),
             within_business_hours=Case(
                 *[When(
@@ -85,7 +83,7 @@ def calculate_uptime_downtime(store_id):
 
 def generate_report(report_id):
     # Fetch the stores queryset and convert it to a list asynchronously
-    stores = BusinessHour.objects.all()
+    stores = Timezone.objects.all()
     report_obj = ReportStatus.objects.get(id=report_id)
 
     # Iterate over the list of stores
