@@ -43,7 +43,7 @@ def download_report(request, report_id):
     response['mimetype'] = 'text/csv'
     response['Content-Disposition'] = f'attachment;filename=Report-{report_id}.csv'
     writer = csv.writer(response)
-    writer.writerow(['store_id', 'uptime_last_hour(in mins)', 'uptime_last_day(in hrs)', 'uptime_last_week(in hrs)'
+    writer.writerow(['store_id', 'uptime_last_hour(in mins)', 'uptime_last_day(in hrs)', 'uptime_last_week(in hrs)',
                         'downtime_last_hour(in mins)', 'downtime_last_day(in hrs)', 'downtime_last_week(in hrs)'])
     for data in queryset:
         writer.writerow([data.store_id, data.uptime_last_hour, data.uptime_last_day, data.uptime_last_week,
